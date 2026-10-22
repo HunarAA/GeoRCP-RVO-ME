@@ -1,0 +1,24 @@
+{
+  "amendment_sha256": "2a5e6e487ad7243be2cb54058c1515611cd22fad99494ddff3e7a135642b847c",
+  "architecture_change": false,
+  "loss_family_change": false,
+  "name": "GeoRCP-MIRAGE v1.1 target-validity amendment",
+  "parent_master_sha256": "9f1586d102523009443e2b88dca54a9ca8fa5c983f08fdde837184d436a95801",
+  "parent_scientific_design": "GeoRCP-MIRAGE v1",
+  "reason": "Independent raw IRF and SRF rasterization produced 165 overlap pixels across 17/3012 images. Step05E5C demonstrated boundary/rasterization ambiguity: 0 overlap pixels remain after 2-pixel simultaneous erosion and 0 pixels lie >2 px inside both regions.",
+  "region_policy": {
+    "boundary_policy": "retain independent class-specific SRF and IRF boundary targets",
+    "class_precedence": null,
+    "head": "retain mutually exclusive background/SRF/IRF softmax",
+    "interior_classification_policy": "set raw SRF/IRF overlap pixels to IGNORE_INDEX=255 and region_valid=0",
+    "raw_overlap_images": 17,
+    "raw_overlap_pixels": 165
+  },
+  "status": "FROZEN",
+  "supporting_step05e5c": {
+    "deep_inside_both_gt2px": 0,
+    "erosion_survival_2px": 0
+  },
+  "target_representation_change": false,
+  "validity_mask_change_only": true
+}

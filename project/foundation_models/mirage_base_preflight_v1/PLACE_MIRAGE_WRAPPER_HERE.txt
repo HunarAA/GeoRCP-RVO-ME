@@ -1,0 +1,3 @@
+Place the official MIRAGE wrapper here as official_mirage_hf.py.
+Source: https://raw.githubusercontent.com/j-morano/MIRAGE/main/hf/mirage_hf.py
+See the main README for details.

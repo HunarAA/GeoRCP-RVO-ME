@@ -1,0 +1,34 @@
+{
+  "initial_profile_candidates_not_yet_frozen": {
+    "AMP": true,
+    "decoder_lr_candidate": 0.0001,
+    "encoder_lr_candidate": 1e-05,
+    "optimizer_candidate": "AdamW",
+    "physical_batch_sizes": [
+      2,
+      4,
+      6,
+      8
+    ],
+    "weight_decay_candidate": 0.01
+  },
+  "must_be_frozen_before_first_definitive_training": [
+    "physical batch size",
+    "gradient accumulation",
+    "effective batch size",
+    "AMP dtype",
+    "gradient checkpointing on/off",
+    "encoder learning rate",
+    "decoder/head learning rate",
+    "weight decay",
+    "scheduler",
+    "warmup",
+    "maximum epochs",
+    "early stopping patience",
+    "validation checkpoint metric",
+    "data augmentation policy"
+  ],
+  "pending_engineering_protocol_sha256": "e073f5b0017c568146bd71f8159eb2733f4effbe723ffe28d6f00c933a7b034e",
+  "rule": "Engineering settings are selected from GPU feasibility and training-fold validation only. They must be frozen before any outer-test evaluation of a proposed model.",
+  "status": "PENDING_EXACT_RTX4080_PROFILE"
+}

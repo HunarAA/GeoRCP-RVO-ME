@@ -1,0 +1,106 @@
+{
+  "decoders": {
+    "stride2_fused_channels": 64,
+    "stride4_fused_channels": 128,
+    "stride4_reassembly_channels": 64
+  },
+  "encoder": {
+    "embed_dim": 768,
+    "model": "MIRAGE-Base",
+    "patch_tokens": 216,
+    "selected_blocks": [
+      3,
+      6,
+      9,
+      12
+    ]
+  },
+  "global_curve_connectivity_loss": false,
+  "global_fusion": {
+    "fused_token_dim": 256,
+    "per_layer_projection": "768->256"
+  },
+  "implementation_spec_sha256": "b5e59901eb67190d5924698ca53165d30d1bccf45028a7454d9ca98147149422",
+  "input": {
+    "normalization": "per-image min-max [0,1]",
+    "padding_lrtb": [
+      3,
+      3,
+      2,
+      2
+    ],
+    "shape": [
+      1,
+      384,
+      576
+    ]
+  },
+  "local_detail": {
+    "stride2_channels": 32,
+    "stride4_channels": 64
+  },
+  "losses": {
+    "balancing": "homoscedastic uncertainty over region/curve/point",
+    "curve": "center BCE +0.5 distance SmoothL1 +0.25 presence BCE + y-distribution CE +0.1 ELM/EZ order hinge",
+    "point": "CenterNet-style modified focal + positive-cell offset SmoothL1",
+    "region": "0.5 CE + 0.5 foreground Dice; +0.25 boundary BCE/Dice"
+  },
+  "name": "GeoRCP-MIRAGE v1.1 exact implementation",
+  "outputs": {
+    "curve_centerline_logits": [
+      1,
+      2,
+      384,
+      576
+    ],
+    "curve_distance": [
+      1,
+      2,
+      384,
+      576
+    ],
+    "curve_presence_logits": [
+      1,
+      2,
+      576
+    ],
+    "hf_heatmap_logits": [
+      1,
+      1,
+      192,
+      288
+    ],
+    "hf_offset": [
+      1,
+      2,
+      192,
+      288
+    ],
+    "region_boundary_logits": [
+      1,
+      2,
+      384,
+      576
+    ],
+    "region_logits": [
+      1,
+      3,
+      384,
+      576
+    ]
+  },
+  "scientific_design_sha256": "9f1586d102523009443e2b88dca54a9ca8fa5c983f08fdde837184d436a95801",
+  "target_validity_sha256": "2a5e6e487ad7243be2cb54058c1515611cd22fad99494ddff3e7a135642b847c",
+  "task_interaction": {
+    "dropout": 0.1,
+    "heads": 8,
+    "joint_tokens": 648,
+    "layers": 2,
+    "mlp_ratio": 4.0,
+    "tasks": [
+      "region",
+      "curve",
+      "point"
+    ]
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "2p5d": {
+    "future_status": "exploratory only if original acquisition metadata or author confirmation establishes physical adjacency",
+    "primary_model": false,
+    "reason": "Released B-scans are strongly ordered but physical adjacency/z-spacing is not proven; representative pathological slices were selected."
+  },
+  "architecture_protocol_sha256": "7201fc90b534251d9395fda20c432eec3443e5860594a8c59e606465f27a3c21",
+  "curve_head": {
+    "full_resolution_hw": [
+      384,
+      576
+    ],
+    "outputs": {
+      "centerline_logits": "2 channels: ELM/EZ",
+      "column_presence_logits": "2 x 576",
+      "column_y_distribution": "derived by softmax over the y dimension of centerline logits on valid columns",
+      "distance_field": "2 channels, sigmoid normalized unsigned vertical distance"
+    },
+    "postprocessing": "presence-gated per-column peaks/distributions; do not fill unobserved gaps",
+    "source": "curve task stride-2 fused feature"
+  },
+  "geometry_task_interaction": {
+    "ablation_required": true,
+    "attention_heads": 8,
+    "attention_scope": "joint self-attention across all region/curve/point task tokens",
+    "concatenated_tokens": 648,
+    "construction": "three learned task-specific linear adapters and task-type embeddings applied to the same 216 fused global tokens",
+    "dropout": 0.1,
+    "mlp_ratio": 4.0,
+    "name": "Geometry-Conditioned Task Interaction Transformer",
+    "purpose": "learn spatial/anatomical dependencies among heterogeneous biomarker tasks without imposing unsafe hard region-point rules",
+    "task_streams": [
+      "region",
+      "curve",
+      "point"
+    ],
+    "token_dim": 256,
+    "transformer_layers": 2
+  },
+  "global_encoder": {
+    "decoder_only_encoder_frozen": "required ablation, not the primary full model",
+    "embedding_dim": 768,
+    "fine_tuning_primary": "full encoder fine-tuning",
+    "image_tokens": 216,
+    "input_patch_grid": [
+      12,
+      18
+    ],
+    "modality": "bscan",
+    "model": "MIRAGE-Base",
+    "official_wrapper_sha256": "07fa63e2766b67dbc0c07f0d9d29db1562f707425ef2fbf90a688f62a94e6ede",
+    "parameters_observed": 86039000,
+    "patch_size": 32,
+    "pretraining": "official retinal OCT/SLO/layer multimodal foundation-model weights",
+    "selected_blocks_one_based": [
+      3,
+      6,
+      9,
+      12
+    ]
+  },
+  "global_token_fusion": {
+    "ablation": "final MIRAGE block only vs blocks 3/6/9/12",
+    "method": "project each selected MIRAGE layer 768->256, concatenate four layer features channel-wise, then linear fuse 1024->256 per spatial token",
+    "output": "216 x 256 shared patch tokens",
+    "selected_layer_projection_dim": 256,
+    "why_multilevel": "combine intermediate local/structural and deeper contextual MIRAGE representations"
+  },
+  "input": {
+    "channels": 1,
+    "near_native_protocol_sha256": "ac5ce015e1a05a3dc47f054c76f8706d42ac9a9c9506543cbf4ca8e621d53714",
+    "normalization": "MIRAGE-compatible OCT normalization; exact numeric normalization verified from official wrapper during implementation",
+    "tensor_hw": [
+      384,
+      576
+    ]
+  },
+  "local_detail_encoder": {
+    "ablation_required": true,
+    "input": "same 1-channel 384x576 OCT",
+    "purpose": "restore high-frequency local information that may be attenuated by 32x32 ViT patches; particularly important for small IRF, ELM/EZ, and HF",
+    "stage_stride2": {
+      "channels": 32,
+      "operator": "3x3 stride-2 convolution + normalization + GELU + one ConvNeXt-style local block"
+    },
+    "stage_stride4": {
+      "channels": 64,
+      "operator": "3x3 stride-2 convolution from stride2 + two ConvNeXt-style local blocks"
+    }
+  },
+  "name": "GeoRCP-MIRAGE v1",
+  "point_head": {
+    "output_hw": [
+      192,
+      288
+    ],
+    "output_stride": 2,
+    "outputs": {
+      "heatmap_logits": 1,
+      "offset_channels": 2
+    },
+    "source": "point task stride-2 fused feature"
+  },
+  "primary_dimensionality": "2D",
+  "region_head": {
+    "boundary_logits": {
+      "activation": "sigmoid",
+      "channels": [
+        "SRF_boundary",
+        "IRF_boundary"
+      ]
+    },
+    "full_resolution_hw": [
+      384,
+      576
+    ],
+    "region_logits": {
+      "activation": "softmax",
+      "classes": [
+        "background",
+        "SRF",
+        "IRF"
+      ]
+    },
+    "source": "region task stride-2 fused feature"
+  },
+  "status": "FROZEN_SCIENTIFIC_ARCHITECTURE",
+  "target_protocol_sha256": "74af7ecd608c54056c72eafefe3392375107f2f3fe9a43a50db45641e8c81ddd",
+  "task_reassembly": {
+    "per_task_patch_expansion": {
+      "channels": 64,
+      "expansion": "learned 8x8 patch reassembly from patch-32 tokens",
+      "input": "216 x 256 task tokens",
+      "output_hw": [
+        96,
+        144
+      ],
+      "output_stride": 4
+    },
+    "stride2_local_fusion": {
+      "channels_after_fusion": 64,
+      "operation": "bilinear upsample task feature x2, concatenate local-detail stride-2 feature"
+    },
+    "stride4_local_fusion": {
+      "fused_channels": 128,
+      "inputs": [
+        "task stride-4 global feature 64ch",
+        "local-detail stride-4 feature 64ch"
+      ],
+      "refinement": "two ConvNeXt-style blocks"
+    }
+  }
+}

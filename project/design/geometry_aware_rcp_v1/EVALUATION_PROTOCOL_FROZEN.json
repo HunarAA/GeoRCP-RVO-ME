@@ -1,0 +1,64 @@
+{
+  "cross_validation": {
+    "confidence_intervals": "patient-cluster bootstrap, 10,000 replicates",
+    "outer_test_usage": "exactly once per patient/fold; never for checkpoint selection or hyperparameter tuning",
+    "patient_protocol_sha256": "52ed516dcc21f1c51068c59fb662c9a0030b143e6440d6f4a0380df713c9bcaf",
+    "patient_roles": "frozen canonical 5-fold Track-B roles",
+    "primary_oof_aggregation": "pool additive patient-level sufficient statistics where mathematically valid"
+  },
+  "curves": {
+    "gap_sensitive_analysis": [
+      "fragment count error",
+      "false bridge rate across GT gaps",
+      "missed annotated segment rate"
+    ],
+    "note": "Dice alone is not the primary curve endpoint because 1-pixel shifts strongly alter thin-line overlap.",
+    "primary_metrics": [
+      "mean absolute vertical boundary error (pixels)",
+      "median absolute vertical boundary error (pixels)",
+      "HD95 / robust curve distance",
+      "column-presence precision",
+      "column-presence recall",
+      "column-presence F1"
+    ],
+    "secondary_comparability_metrics": [
+      "Dice/IoU after rasterizing predicted curve using the released-mask comparison convention"
+    ]
+  },
+  "evaluation_protocol_sha256": "1fba9f37467177f1363a0b10e5240fda78c569801a24c8546f17ed76fb8aaa4a",
+  "frozen_unetpp_reference": {
+    "aggregation_sha256": "944ee1620967920c19709c56ff172d32d756285b1ec971c4d3196fe9d5498051",
+    "native256_pooled_mean_dice": 0.6561,
+    "native570x380_pooled_mean_dice": 0.579
+  },
+  "name": "GeoRCP-MIRAGE Evaluation Protocol v1",
+  "points": {
+    "primary_metrics": [
+      "precision/recall/F1 within 5-pixel tolerance",
+      "precision/recall/F1 within 10-pixel tolerance",
+      "mean localization error",
+      "median localization error",
+      "FROC",
+      "count MAE"
+    ],
+    "secondary_official_comparison": "convert point predictions to the paper-compatible box convention only for secondary AP@0.5 comparison"
+  },
+  "regions": {
+    "boundary_metrics": [
+      "boundary F1 at prespecified tolerance",
+      "HD95"
+    ],
+    "evaluation_canvas": "exact native 570x380 crop",
+    "primary_metrics": [
+      "Dice",
+      "IoU"
+    ]
+  },
+  "status": "FROZEN",
+  "unified_reporting": {
+    "fold_mean_sd": true,
+    "patient_bootstrap_ci": true,
+    "per_fold": true,
+    "pooled_oof": true
+  }
+}

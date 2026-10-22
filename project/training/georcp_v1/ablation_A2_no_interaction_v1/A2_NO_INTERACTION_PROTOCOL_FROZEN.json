@@ -1,0 +1,64 @@
+{
+  "ablation_id": "A2",
+  "ablation_plan_sha256": "e9c292325f9ad9413e11a2f805b5854e9779c733b7ed9dc221bf79575a158233",
+  "ablation_scientific_source_sha256": "0227d2b558e7b816c37fa0cac12fa5142a7d91127a1612287ead8ddbfb5b51e5",
+  "active_target_master_sha256": "521859acb4c5389eb4244298f755420f1339b7e4c4bedcfac7c64ddcfe98ce59",
+  "active_target_version": "geometry_v3",
+  "architecture": {
+    "preserved": [
+      "MIRAGE-Base full fine-tuning",
+      "MIRAGE blocks 3/6/9/12",
+      "GlobalFusion",
+      "LocalEncoder stride2/stride4",
+      "three independent TaskFusion branches",
+      "RegionHead",
+      "CurveHead",
+      "PointHead"
+    ],
+    "removed": [
+      "complete TaskInteraction module: region/curve/point adapters + task embeddings + 2-layer 8-head Transformer"
+    ],
+    "routing_after_ablation": "same shared GlobalFusion tokens are passed directly and independently to region/curve/point TaskFusion branches"
+  },
+  "mirage_wrapper_sha256": "07fa63e2766b67dbc0c07f0d9d29db1562f707425ef2fbf90a688f62a94e6ede",
+  "name": "RVO-ME GeoRCP-MIRAGE A2 no-task-interaction five-fold training protocol v1",
+  "parent_full_georcp_training_protocol_sha256": "8640e7b4039cfc5f6fcd45269aaf9003a337a090f3af5a8aa787c9dcd9a0491e",
+  "parent_implementation_spec_sha256": "b5e59901eb67190d5924698ca53165d30d1bccf45028a7454d9ca98147149422",
+  "protocol_sha256": "48790283a42311f666b09ad9e2d2f2d6eb03e99a58170ce8891e3e2cf43ca944",
+  "scientific_design_sha256": "9f1586d102523009443e2b88dca54a9ca8fa5c983f08fdde837184d436a95801",
+  "status": "FROZEN_BEFORE_A2_OUTER_TEST",
+  "step07_source_bundle_sha256": "04e7da4fe311b756ad375a6c241530d0572a3cf1b9c71a70af2e7e7e24524412",
+  "test_safety": {
+    "outer_test_evaluated_during_training": false,
+    "outer_test_resolved_during_training": false,
+    "training_split_resolver_allowed_roles": [
+      "train",
+      "val"
+    ]
+  },
+  "trackb_split_master_sha256": "7e7c2ddf51054bf998b2d750b50c74983b9bc5b751b762213bc96343ffe01346",
+  "training": {
+    "augmentation": "NONE",
+    "checkpoint_metric": "val_raw_group_sum",
+    "checkpoint_mode": "min",
+    "early_stopping_min_delta": 0.001,
+    "early_stopping_patience": 12,
+    "effective_batch_size": 7,
+    "encoder_lr": 1e-05,
+    "gradient_accumulation_steps": 1,
+    "head_lr": 0.0001,
+    "maximum_epochs": 60,
+    "minimum_epochs_before_stop": 20,
+    "minimum_lr_factor": 0.01,
+    "num_workers": 0,
+    "optimizer": "AdamW",
+    "physical_batch_size": 7,
+    "precision": "BF16",
+    "scheduler": "linear warmup then cosine decay",
+    "seed": 20260815,
+    "uncertainty_lr": 0.0001,
+    "validation_batch_size": 7,
+    "warmup_epochs": 5,
+    "weight_decay": 0.01
+  }
+}

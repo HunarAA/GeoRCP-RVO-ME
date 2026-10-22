@@ -1,0 +1,75 @@
+{
+  "architecture_protocol_sha256": "7201fc90b534251d9395fda20c432eec3443e5860594a8c59e606465f27a3c21",
+  "curve_group": {
+    "ELM_EZ_order": {
+      "loss": "ReLU(expected_y_ELM - expected_y_EZ)",
+      "mask": "columns where both curves are valid",
+      "relative_weight": 0.1
+    },
+    "centerline_heatmap": {
+      "loss": "binary cross entropy with soft Gaussian targets",
+      "relative_weight": 1.0
+    },
+    "column_presence": {
+      "loss": "binary cross entropy",
+      "relative_weight": 0.25
+    },
+    "column_y_distribution": {
+      "loss": "cross entropy / KL from ground-truth Gaussian vertical distribution to predicted y-softmax",
+      "mask": "present/annotated columns only",
+      "relative_weight": 1.0
+    },
+    "global_connectivity_loss": {
+      "enabled": false,
+      "reason": "True EZ pathological ruptures/discontinuous bands must not be artificially bridged."
+    },
+    "vertical_distance_field": {
+      "loss": "SmoothL1",
+      "mask": "annotated curve columns only",
+      "relative_weight": 0.5
+    }
+  },
+  "important_note": "Numerical task-level balancing is dynamic; no outer-test result may be used to select or modify loss definitions.",
+  "loss_protocol_sha256": "8e32825a24a978c27dadd8d924450b4a363ec1fe8b4433ea89f575b713b43f73",
+  "name": "GeoRCP-MIRAGE Loss Protocol v1",
+  "padding_policy": "spatial losses use target-specific validity masks defined in the target protocol",
+  "point_group": {
+    "heatmap": {
+      "loss": "CenterNet-style modified focal heatmap loss",
+      "relative_weight": 1.0
+    },
+    "offset": {
+      "loss": "SmoothL1 at positive HF center cells only",
+      "relative_weight": 1.0
+    }
+  },
+  "region_group": {
+    "boundary_auxiliary": {
+      "components": [
+        "binary cross entropy",
+        "soft Dice"
+      ],
+      "relative_weight_within_region_group": 0.25
+    },
+    "mask_loss": {
+      "combination": "equal contribution after component normalization",
+      "components": [
+        "multiclass cross entropy",
+        "foreground soft Dice"
+      ]
+    }
+  },
+  "status": "FROZEN_LOSS_FAMILIES",
+  "target_protocol_sha256": "74af7ecd608c54056c72eafefe3392375107f2f3fe9a43a50db45641e8c81ddd",
+  "task_group_balancing": {
+    "form": "sum_t exp(-s_t)*L_t + s_t",
+    "groups": [
+      "region",
+      "curve",
+      "point"
+    ],
+    "initial_log_variance": 0.0,
+    "method": "learned homoscedastic uncertainty weighting with one trainable log-variance per task group",
+    "reason": "region, curve, and point targets have radically different support densities and raw loss scales; dynamic group balancing avoids test-driven manual weight tuning"
+  }
+}

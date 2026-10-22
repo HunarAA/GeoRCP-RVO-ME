@@ -1,0 +1,37 @@
+{
+  "critical_design_decisions": [
+    "2D primary model; no primary 2.5D claim",
+    "near-native 384x576 model canvas",
+    "MIRAGE-Base full-finetune primary encoder",
+    "blocks 3/6/9/12 multilevel fusion",
+    "native-detail CNN path",
+    "geometry-conditioned region/curve/point task interaction",
+    "IRF/SRF region masks + boundary auxiliary",
+    "ELM/EZ hybrid dense curve + column-y targets",
+    "no forced global EZ continuity",
+    "ELM-above-EZ soft ordering constraint",
+    "HF stride-2 heatmap + subpixel offsets",
+    "patient-disjoint frozen 5-fold evaluation"
+  ],
+  "design_name": "GeoRCP-MIRAGE v1",
+  "engineering_profile_pending": true,
+  "frozen_dependencies": {
+    "geometry_v1_sha256": "a4029d5ab4570237ae607d1cc24d551ce438845eab1814e8a82735a122daeb55",
+    "near_native_protocol_sha256": "ac5ce015e1a05a3dc47f054c76f8706d42ac9a9c9506543cbf4ca8e621d53714",
+    "official_mirage_wrapper_sha256": "07fa63e2766b67dbc0c07f0d9d29db1562f707425ef2fbf90a688f62a94e6ede",
+    "patient_5fold_protocol_sha256": "52ed516dcc21f1c51068c59fb662c9a0030b143e6440d6f4a0380df713c9bcaf",
+    "unetpp_trackB_5fold_aggregation_sha256": "944ee1620967920c19709c56ff172d32d756285b1ec971c4d3196fe9d5498051"
+  },
+  "protocols": {
+    "ablation_plan_sha256": "e9c292325f9ad9413e11a2f805b5854e9779c733b7ed9dc221bf79575a158233",
+    "architecture_protocol_sha256": "7201fc90b534251d9395fda20c432eec3443e5860594a8c59e606465f27a3c21",
+    "evaluation_protocol_sha256": "1fba9f37467177f1363a0b10e5240fda78c569801a24c8546f17ed76fb8aaa4a",
+    "loss_protocol_sha256": "8e32825a24a978c27dadd8d924450b4a363ec1fe8b4433ea89f575b713b43f73",
+    "pending_engineering_protocol_sha256": "e073f5b0017c568146bd71f8159eb2733f4effbe723ffe28d6f00c933a7b034e",
+    "target_protocol_sha256": "74af7ecd608c54056c72eafefe3392375107f2f3fe9a43a50db45641e8c81ddd"
+  },
+  "scientific_design_frozen": true,
+  "scientific_design_master_sha256": "9f1586d102523009443e2b88dca54a9ca8fa5c983f08fdde837184d436a95801",
+  "status": "COMPLETE",
+  "step": "05E5A"
+}

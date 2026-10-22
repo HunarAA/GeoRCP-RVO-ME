@@ -1,0 +1,55 @@
+{
+  "ablation_id": "A2",
+  "ablation_plan_sha256": "e9c292325f9ad9413e11a2f805b5854e9779c733b7ed9dc221bf79575a158233",
+  "ablation_scientific_source_sha256": "0227d2b558e7b816c37fa0cac12fa5142a7d91127a1612287ead8ddbfb5b51e5",
+  "folds": {
+    "1": {
+      "best_checkpoint": "D:\\RVO_ME\\project\\training\\georcp_v1\\ablation_A2_no_interaction_v1\\fold_1\\best_checkpoint.pt",
+      "best_epoch": 9,
+      "best_val_raw_group_sum": 3.9410422584011218,
+      "completion_report": "D:\\RVO_ME\\project\\training\\georcp_v1\\ablation_A2_no_interaction_v1\\fold_1\\FOLD1_TRAINING_COMPLETE.json",
+      "run_dir": "D:\\RVO_ME\\project\\training\\georcp_v1\\ablation_A2_no_interaction_v1\\fold_1",
+      "status": "COMPLETE"
+    },
+    "2": {
+      "best_checkpoint": "D:\\RVO_ME\\project\\training\\georcp_v1\\ablation_A2_no_interaction_v1\\fold_2\\best_checkpoint.pt",
+      "best_epoch": 8,
+      "best_val_raw_group_sum": 3.9553611512537357,
+      "completion_report": "D:\\RVO_ME\\project\\training\\georcp_v1\\ablation_A2_no_interaction_v1\\fold_2\\FOLD2_TRAINING_COMPLETE.json",
+      "run_dir": "D:\\RVO_ME\\project\\training\\georcp_v1\\ablation_A2_no_interaction_v1\\fold_2",
+      "status": "COMPLETE"
+    },
+    "3": {
+      "best_checkpoint": "D:\\RVO_ME\\project\\training\\georcp_v1\\ablation_A2_no_interaction_v1\\fold_3\\best_checkpoint.pt",
+      "best_epoch": 8,
+      "best_val_raw_group_sum": 3.949999359520999,
+      "completion_report": "D:\\RVO_ME\\project\\training\\georcp_v1\\ablation_A2_no_interaction_v1\\fold_3\\FOLD3_TRAINING_COMPLETE.json",
+      "run_dir": "D:\\RVO_ME\\project\\training\\georcp_v1\\ablation_A2_no_interaction_v1\\fold_3",
+      "status": "COMPLETE"
+    },
+    "4": {
+      "best_checkpoint": "D:\\RVO_ME\\project\\training\\georcp_v1\\ablation_A2_no_interaction_v1\\fold_4\\best_checkpoint.pt",
+      "best_epoch": 9,
+      "best_val_raw_group_sum": 3.9706482287735967,
+      "completion_report": "D:\\RVO_ME\\project\\training\\georcp_v1\\ablation_A2_no_interaction_v1\\fold_4\\FOLD4_TRAINING_COMPLETE.json",
+      "run_dir": "D:\\RVO_ME\\project\\training\\georcp_v1\\ablation_A2_no_interaction_v1\\fold_4",
+      "status": "COMPLETE"
+    },
+    "5": {
+      "best_checkpoint": "D:\\RVO_ME\\project\\training\\georcp_v1\\ablation_A2_no_interaction_v1\\fold_5\\best_checkpoint.pt",
+      "best_epoch": 9,
+      "best_val_raw_group_sum": 3.786549088046037,
+      "completion_report": "D:\\RVO_ME\\project\\training\\georcp_v1\\ablation_A2_no_interaction_v1\\fold_5\\FOLD5_TRAINING_COMPLETE.json",
+      "run_dir": "D:\\RVO_ME\\project\\training\\georcp_v1\\ablation_A2_no_interaction_v1\\fold_5",
+      "status": "COMPLETE"
+    }
+  },
+  "global_protocol_sha256": "48790283a42311f666b09ad9e2d2f2d6eb03e99a58170ce8891e3e2cf43ca944",
+  "model": "GeoRCP-MIRAGE A2 no task-interaction transformer",
+  "outer_test_evaluated": false,
+  "outer_test_resolved": false,
+  "parent_full_georcp_training_protocol_sha256": "8640e7b4039cfc5f6fcd45269aaf9003a337a090f3af5a8aa787c9dcd9a0491e",
+  "selected_protocol": "NO_AUGMENTATION",
+  "status": "ALL_FIVE_FOLDS_TRAINING_COMPLETE",
+  "trackb_split_master_sha256": "7e7c2ddf51054bf998b2d750b50c74983b9bc5b751b762213bc96343ffe01346"
+}

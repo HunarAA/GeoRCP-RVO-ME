@@ -1,0 +1,72 @@
+{
+  "ablation_plan_sha256": "e9c292325f9ad9413e11a2f805b5854e9779c733b7ed9dc221bf79575a158233",
+  "mandatory_encoder_ablation": {
+    "frozen_MIRAGE_vs_full_finetune": true,
+    "recommended_scope": "at minimum one prespecified fold during development; final choice selected only on validation, never outer test"
+  },
+  "modern_baselines": [
+    {
+      "id": "B0",
+      "input": "256x256",
+      "model": "U-Net++",
+      "purpose": "clean conventional reference",
+      "status": "COMPLETE_FROZEN"
+    },
+    {
+      "id": "B1",
+      "input": "near-native/native geometry preserving",
+      "model": "nnU-Net v2 residual-encoder configuration",
+      "purpose": "strong self-configuring specialist segmentation baseline",
+      "status": "PENDING"
+    },
+    {
+      "id": "B2",
+      "input": "384x576",
+      "model": "MIRAGE-Base + standard published-style ConvNeXt semantic segmentation decoder",
+      "purpose": "OCT foundation-model baseline; isolates domain pretraining + near-native resolution",
+      "status": "PENDING"
+    }
+  ],
+  "multilevel_feature_ablation": {
+    "final_block_only_vs_blocks_3_6_9_12": true
+  },
+  "name": "RVO-ME Modern Baseline and GeoRCP Ablation Plan v1",
+  "outer_test_tuning_prohibited": true,
+  "proposed_ablation_sequence": [
+    {
+      "configuration": "MIRAGE-Base + standard semantic decoder at 384x576",
+      "id": "A0",
+      "tests": "foundation encoder / resolution baseline"
+    },
+    {
+      "configuration": "A0 + local-detail encoder, still ordinary semantic segmentation",
+      "id": "A1",
+      "tests": "high-frequency local-detail contribution"
+    },
+    {
+      "configuration": "MIRAGE multilevel + local detail + geometry-specific Region/Curve/Point heads, NO task-interaction transformer",
+      "id": "A2",
+      "tests": "geometry-specific representation contribution"
+    },
+    {
+      "configuration": "A2 + Geometry-Conditioned Task Interaction Transformer",
+      "id": "A3",
+      "tests": "cross-task interaction contribution"
+    },
+    {
+      "configuration": "A3 + curve column-y distribution + ELM/EZ ordering constraint",
+      "id": "A4",
+      "tests": "structured curve supervision contribution"
+    },
+    {
+      "configuration": "FULL GeoRCP-MIRAGE v1",
+      "id": "A5",
+      "tests": "final proposed architecture"
+    }
+  ],
+  "resolution_control": {
+    "reason": "architecture gains must not be confounded with 256x256 -> 384x576 geometry preservation",
+    "required": true
+  },
+  "status": "FROZEN_BEFORE_PROPOSED_MODEL_TESTING"
+}

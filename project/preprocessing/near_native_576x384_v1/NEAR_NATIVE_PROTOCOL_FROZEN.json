@@ -1,0 +1,59 @@
+{
+  "coordinate_forward": {
+    "x_model": "x_native + 3",
+    "y_model": "y_native + 2"
+  },
+  "coordinate_inverse": {
+    "x_native": "x_model - 3",
+    "y_native": "y_model - 2"
+  },
+  "evaluation_policy": {
+    "native_prediction_crop": "[top:top+380, left:left+570]",
+    "no_resize_back_to_native": true,
+    "primary_native_evaluation": "crop model prediction back to exact 570x380 before native-raster evaluation"
+  },
+  "frozen_project_dependencies": {
+    "geometry_v1_sha256": "a4029d5ab4570237ae607d1cc24d551ce438845eab1814e8a82735a122daeb55",
+    "patient_5fold_protocol_sha256": "52ed516dcc21f1c51068c59fb662c9a0030b143e6440d6f4a0380df713c9bcaf"
+  },
+  "geometry_policy": {
+    "float_coordinates_remain_float": true,
+    "no_coordinate_clipping_for_authoritative_geometry": true,
+    "no_coordinate_rounding": true,
+    "rasterization_clipping_only_if_required_by_target_builder": true
+  },
+  "important_note": "This protocol preserves the released 570x380 raster exactly. The added border is outside the native field of view and is removed before native-raster evaluation.",
+  "interpolation": null,
+  "model_compatibility": {
+    "height_divisible_by_16": true,
+    "height_patch16_tokens": 24,
+    "patch16_token_grid": [
+      24,
+      36
+    ],
+    "width_divisible_by_16": true,
+    "width_patch16_tokens": 36
+  },
+  "model_raster": {
+    "height": 384,
+    "width": 576
+  },
+  "name": "RVO-ME near-native padding protocol v1",
+  "near_native_protocol_sha256": "ac5ce015e1a05a3dc47f054c76f8706d42ac9a9c9506543cbf4ca8e621d53714",
+  "padding": {
+    "bottom": 2,
+    "image_value": 0,
+    "left": 3,
+    "mask_value": 0,
+    "right": 3,
+    "top": 2
+  },
+  "resize": false,
+  "scientific_status": "FROZEN_FOR_MODERN_BASELINES_AND_PROPOSED_MODEL",
+  "source_raster": {
+    "height": 380,
+    "width": 570
+  },
+  "transform_type": "constant_zero_padding_only",
+  "version": 1
+}

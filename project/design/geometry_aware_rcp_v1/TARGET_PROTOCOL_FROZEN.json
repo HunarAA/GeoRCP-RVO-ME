@@ -1,0 +1,139 @@
+{
+  "authoritative_source": "Raw LabelMe float geometry for IRF/SRF/ELM/EZ/HF",
+  "canvas": {
+    "interpolation": null,
+    "model_wh": [
+      576,
+      384
+    ],
+    "native_wh": [
+      570,
+      380
+    ],
+    "near_native_protocol_sha256": "ac5ce015e1a05a3dc47f054c76f8706d42ac9a9c9506543cbf4ca8e621d53714",
+    "padding_lrtb": [
+      3,
+      3,
+      2,
+      2
+    ],
+    "resize": false
+  },
+  "conventional_mask_source": "Released Image_Seg masks retained only for conventional semantic-segmentation benchmark reproduction/comparison",
+  "curves": {
+    "anatomical_order_constraint": {
+      "condition": "columns where both ELM and EZ are present/valid",
+      "enabled": true,
+      "hard_margin_px": 0.0,
+      "loss": "hinge/ReLU ordering penalty; no fixed anatomical separation imposed",
+      "rule": "expected_y_ELM <= expected_y_EZ"
+    },
+    "auxiliary_targets": {
+      "column_presence": {
+        "meaning": "whether ELM/EZ is annotated/identifiable in that column",
+        "shape": "2 x 576"
+      },
+      "column_y_distribution": {
+        "multiple_levels": "multi-peak target permitted in rare ambiguous columns",
+        "shape": "2 x 384 x 576",
+        "sigma_native_px": 1.5,
+        "supervision": "normalized vertical Gaussian distribution, only on present columns"
+      }
+    },
+    "data_support": {
+      "ELM_median_horizontal_coverage": 0.32105263157894737,
+      "ELM_positive_images": 1625,
+      "ELM_valid_annotations": 2384,
+      "ELM_x_monotonic_fraction": 0.9991610738255033,
+      "EZ_median_horizontal_coverage": 0.48596491228070177,
+      "EZ_positive_images": 2730,
+      "EZ_valid_annotations": 4474,
+      "EZ_x_monotonic_fraction": 0.9995529727313366
+    },
+    "geometry_dimension": "1D",
+    "labels": [
+      "ELM",
+      "EZ"
+    ],
+    "pathology_preservation_policy": {
+      "force_global_connectivity": false,
+      "gap_modeling": "column-presence prediction explicitly models visible/annotated gaps",
+      "global_cldice_training_loss": false,
+      "reason": "EZ rupture/discontinuity can be pathological and explicitly occurs in the dataset annotation protocol. The model must not be forced to bridge true gaps."
+    },
+    "primary_targets": {
+      "centerline_heatmap": {
+        "composition_for_multiple_levels": "pixelwise maximum",
+        "description": "Gaussian proximity map generated from authoritative float curves on annotated columns only",
+        "sigma_native_px": 1.5
+      },
+      "vertical_distance_field": {
+        "description": "per-column unsigned vertical distance to nearest valid curve level",
+        "loss_validity": "only columns covered by an authoritative curve annotation",
+        "normalization": "clip(distance/16, 0, 1)",
+        "truncation_native_px": 16.0
+      }
+    },
+    "valid_annotation_type": "linestrip with >=2 finite points",
+    "validity_mask": "native FOV; no ELM/EZ raw coordinate was observed outside native FOV"
+  },
+  "geometry_v1_dependency_sha256": "a4029d5ab4570237ae607d1cc24d551ce438845eab1814e8a82735a122daeb55",
+  "malformed_annotation_policy": "Retain the image and exclude only the malformed individual primary annotation, matching geometry_v1.",
+  "name": "RVO-ME Geometry-Aware Target Protocol v2",
+  "points": {
+    "collision_evidence": {
+      "stride_2_extra_collision_fraction": 0.0,
+      "stride_2_extra_collisions": 0,
+      "stride_4_extra_collision_fraction": 0.001954,
+      "stride_4_extra_collisions": 18
+    },
+    "geometry_dimension": "0D",
+    "heatmap_hw": [
+      192,
+      288
+    ],
+    "label": "HF",
+    "output_stride": 2,
+    "positive_images": 2286,
+    "target": {
+      "gaussian_composition": "pixelwise maximum, preserving multiple nearby peaks",
+      "gaussian_sigma_cells": 1.0,
+      "heatmap": "Gaussian center heatmap at stride 2",
+      "offset": "two-channel local fractional x/y offset from heatmap cell to authoritative float coordinate"
+    },
+    "valid_annotation_type": "single finite LabelMe point",
+    "valid_points": 9212,
+    "validity_mask": "native FOV; no valid HF center was observed outside native FOV"
+  },
+  "regions": {
+    "auxiliary_target": "one-pixel class-specific region boundary maps derived from the padded region masks",
+    "geometry_dimension": "2D",
+    "labels": [
+      "SRF",
+      "IRF"
+    ],
+    "oob_annotation_policy": {
+      "interpretation": "All are region vertices. Maximum right-boundary excursion is 0; they reach the continuous x=570 boundary but do not extend beyond it.",
+      "labels": {
+        "IRF": 24,
+        "SRF": 1
+      },
+      "observed_vertices": 25,
+      "preserve_raw_float_vertices": true
+    },
+    "primary_target": "two binary region masks rasterized from valid raw geometry on 576x384",
+    "rasterization": {
+      "linestrip_with_at_least_3_points": "closed filled region, matching validated geometry_v1 policy",
+      "malformed_shape_policy": "exclude malformed individual annotation only; retain image",
+      "polygon": "closed filled region"
+    },
+    "semantic_relation": "The final region classifier is mutually exclusive at inference: background/SRF/IRF.",
+    "validity_masks": {
+      "region_boundary_auxiliary_loss": "native FOV plus annotation-supported right-boundary padding where a raw IRF/SRF vertex lies exactly on the continuous x=570 image boundary",
+      "region_interior_loss": "native 570x380 field of view only"
+    }
+  },
+  "status": "FROZEN",
+  "target_protocol_sha256": "74af7ecd608c54056c72eafefe3392375107f2f3fe9a43a50db45641e8c81ddd",
+  "version": 2
+}

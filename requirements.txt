@@ -1,0 +1,15 @@
+# Tested with Python 3.8.20
+# Install the PyTorch build matching your CUDA version from https://pytorch.org
+# (experiments used torch 2.4.1 with CUDA 12.1)
+torch==2.4.1
+numpy
+opencv-python
+scipy
+openpyxl
+matplotlib
+Pillow
+huggingface_hub
+safetensors
+einops
+requests
+iterative-stratification
