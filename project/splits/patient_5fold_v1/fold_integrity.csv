@@ -1,0 +1,6 @@
+﻿train_patients,val_patients,test_patients,train_eyes,val_eyes,test_eyes,patient_leakage,eye_leakage,fold
+91,13,26,102,15,29,0,0,1
+91,13,26,102,14,30,0,0,2
+90,14,26,101,16,29,0,0,3
+89,15,26,100,17,29,0,0,4
+89,15,26,100,17,29,0,0,5

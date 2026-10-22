@@ -1,0 +1,6 @@
+﻿fold,train_patients,val_patients,test_patients,train_images,val_images,test_images,patient_leakage,image_leakage
+1,91,13,26,2110,303,599,0,0
+2,91,13,26,2136,270,606,0,0
+3,90,14,26,2106,308,598,0,0
+4,89,15,26,2039,342,631,0,0
+5,89,15,26,2072,362,578,0,0

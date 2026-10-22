@@ -1,0 +1,74 @@
+{
+  "protocol_name": "trackB_conventional_training_protocol_v1",
+  "canonical_patient_protocol": "patient5fold_protocol_v1",
+  "canonical_protocol_sha256": "52ed516dcc21f1c51068c59fb662c9a0030b143e6440d6f4a0380df713c9bcaf",
+  "task": "5-class conventional semantic segmentation",
+  "classes": {
+    "0": "Background",
+    "1": "SRF",
+    "2": "IRF",
+    "3": "ELM",
+    "4": "EZ"
+  },
+  "input": {
+    "height": 256,
+    "width": 256,
+    "channels": 3,
+    "source": "grayscale OCT duplicated to 3 channels",
+    "scaling": "[0,1]"
+  },
+  "augmentation": {
+    "horizontal_flip_probability": 0.5,
+    "rotation": false,
+    "vertical_flip": false,
+    "photometric": false
+  },
+  "loss": {
+    "name": "CrossEntropy + foreground soft multiclass Dice",
+    "cross_entropy_weight": 1.0,
+    "dice_weight": 1.0,
+    "dice_smooth": 1e-05,
+    "dice_classes": [
+      "SRF",
+      "IRF",
+      "ELM",
+      "EZ"
+    ]
+  },
+  "optimizer": {
+    "name": "Adam",
+    "initial_lr": 0.001,
+    "weight_decay": 0.0,
+    "scheduler": null
+  },
+  "training": {
+    "seed": 20260814,
+    "maximum_epochs": 30,
+    "early_stopping_patience": 5,
+    "checkpoint_selection_metric": "validation_mean_foreground_dice_native256",
+    "requested_physical_batch_size": 4,
+    "target_effective_batch_size": 4,
+    "amp": true,
+    "num_workers": 0,
+    "retrain_train_plus_validation": false
+  },
+  "evaluation": {
+    "test_evaluated_only_after_model_selection": true,
+    "scales": [
+      "native256",
+      "original570x380"
+    ],
+    "primary_segmentation_metrics": [
+      "Dice",
+      "IoU"
+    ],
+    "patient_level_confusion_saved": true,
+    "per_image_metrics_saved": true
+  },
+  "policy": {
+    "same_protocol_for_all_conventional_models": true,
+    "do_not_tune_after_test_results": true,
+    "future_protocol_changes_require_new_version": true
+  },
+  "training_protocol_sha256": "3a37f6471518dcebbb3553da0b436ab371a5cec079053255c2df581a9ba63e31"
+}

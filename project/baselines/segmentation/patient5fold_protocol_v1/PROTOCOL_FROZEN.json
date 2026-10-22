@@ -1,0 +1,113 @@
+{
+  "protocol_name": "patient5fold_protocol_v1",
+  "source_split": "patient_5fold_v1",
+  "source_fold_assignments_sha256": "7e7c2ddf51054bf998b2d750b50c74983b9bc5b751b762213bc96343ffe01346",
+  "geometry_v1_sha256": "a4029d5ab4570237ae607d1cc24d551ce438845eab1814e8a82735a122daeb55",
+  "assignment_detection": {
+    "mode": "frozen_fold_specific_role_files",
+    "source_files": [
+      "fold_1\\test.txt",
+      "fold_1\\test_patients.txt",
+      "fold_1\\train.txt",
+      "fold_1\\train_patients.txt",
+      "fold_1\\val.txt",
+      "fold_1\\val_patients.txt",
+      "fold_2\\test.txt",
+      "fold_2\\test_patients.txt",
+      "fold_2\\train.txt",
+      "fold_2\\train_patients.txt",
+      "fold_2\\val.txt",
+      "fold_2\\val_patients.txt",
+      "fold_3\\test.txt",
+      "fold_3\\test_patients.txt",
+      "fold_3\\train.txt",
+      "fold_3\\train_patients.txt",
+      "fold_3\\val.txt",
+      "fold_3\\val_patients.txt",
+      "fold_4\\test.txt",
+      "fold_4\\test_patients.txt",
+      "fold_4\\train.txt",
+      "fold_4\\train_patients.txt",
+      "fold_4\\val.txt",
+      "fold_4\\val_patients.txt",
+      "fold_5\\test.txt",
+      "fold_5\\test_patients.txt",
+      "fold_5\\train.txt",
+      "fold_5\\train_patients.txt",
+      "fold_5\\val.txt",
+      "fold_5\\val_patients.txt"
+    ],
+    "role_source_scan_json": "E:\\Papers\\RVO_ME\\project\\baselines\\segmentation\\step05a_frozen_role_source_scan.json"
+  },
+  "patient_count": 130,
+  "image_count": 3012,
+  "folds": [
+    {
+      "fold": 1,
+      "train_patients": 91,
+      "val_patients": 13,
+      "test_patients": 26,
+      "train_images": 2110,
+      "val_images": 303,
+      "test_images": 599,
+      "patient_leakage": 0,
+      "image_leakage": 0
+    },
+    {
+      "fold": 2,
+      "train_patients": 91,
+      "val_patients": 13,
+      "test_patients": 26,
+      "train_images": 2136,
+      "val_images": 270,
+      "test_images": 606,
+      "patient_leakage": 0,
+      "image_leakage": 0
+    },
+    {
+      "fold": 3,
+      "train_patients": 90,
+      "val_patients": 14,
+      "test_patients": 26,
+      "train_images": 2106,
+      "val_images": 308,
+      "test_images": 598,
+      "patient_leakage": 0,
+      "image_leakage": 0
+    },
+    {
+      "fold": 4,
+      "train_patients": 89,
+      "val_patients": 15,
+      "test_patients": 26,
+      "train_images": 2039,
+      "val_images": 342,
+      "test_images": 631,
+      "patient_leakage": 0,
+      "image_leakage": 0
+    },
+    {
+      "fold": 5,
+      "train_patients": 89,
+      "val_patients": 15,
+      "test_patients": 26,
+      "train_images": 2072,
+      "val_images": 362,
+      "test_images": 578,
+      "patient_leakage": 0,
+      "image_leakage": 0
+    }
+  ],
+  "canonical_patient_roles_sha256": "2328dc0214b543a81c28f90cc6fee28d2872d1c7d69c03239cd36b4ccdbadc79",
+  "canonical_image_roles_sha256": "ad9ff4243e1655de8b9d8c8b9474e18f68de4f2e1ccb397d8b09edb50e4ff8b0",
+  "canonical_protocol_sha256": "52ed516dcc21f1c51068c59fb662c9a0030b143e6440d6f4a0380df713c9bcaf",
+  "rules": {
+    "patient_disjoint_within_each_fold": true,
+    "eye_and_image_follow_patient_role": true,
+    "every_patient_tested_exactly_once": true,
+    "every_image_tested_exactly_once": true,
+    "validation_roles_are_read_from_frozen_split": true,
+    "validation_roles_regenerated": false,
+    "future_models_must_use_identical_role_files": true
+  }
+}

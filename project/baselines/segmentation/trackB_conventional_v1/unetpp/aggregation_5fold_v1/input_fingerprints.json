@@ -1,0 +1,32 @@
+{
+  "aggregate_input_sha256": "f46735d4799566c433e53849c94d9bb8d7054089add83c06886f15a705f358df",
+  "canonical_protocol_sha256": "52ed516dcc21f1c51068c59fb662c9a0030b143e6440d6f4a0380df713c9bcaf",
+  "files": {
+    "fold_1/FOLD_COMPLETE.json": "445c1cad686a2f21de44693dd66afb289a395449a0b76f2f497ee29d45c65fa3",
+    "fold_1/global_metrics_native256.json": "29e7995ccb5daee55172acba3916f8731bfc32cd503eb56ffd6e6b179341c47a",
+    "fold_1/global_metrics_original570x380.json": "1428497a20e7296bc01f593d93be369816fbf8cf4fc2bf4074f13ce91ad53d63",
+    "fold_1/per_patient_metrics_native256.csv": "70594c0547022ad8db31cf05d4e2b3d59dfec58eb7c6f2fba2911b50a4d71ccc",
+    "fold_1/per_patient_metrics_original570x380.csv": "158d0946f0b176881e2efba6ce4781baaf8ea71a97457ee6abf38a1e64a82173",
+    "fold_2/FOLD_COMPLETE.json": "7b53c056fd91a49860b747f06812d99a80805550a94f773df1d49b58962e6e8d",
+    "fold_2/global_metrics_native256.json": "7a621da6f37c81dbbd0d020a7d6945acbf3a9343f1f870f7433c72d414cafe6f",
+    "fold_2/global_metrics_original570x380.json": "20034f123a1805055726e9feb3acca39ff8acee56db04e2c166d3f7fb1df935d",
+    "fold_2/per_patient_metrics_native256.csv": "9b79b3cbdfb871e54b649eced425ab6c8b51a30be72414eaa2d2634c6543d4ba",
+    "fold_2/per_patient_metrics_original570x380.csv": "a331ab6888c6bc043f2b72c3eaee4436434668e779d85379d5890bb67a2b20db",
+    "fold_3/FOLD_COMPLETE.json": "e1afff23264be436142ed0f2271400821b9feb29f7726ea3c87d7b117e98943f",
+    "fold_3/global_metrics_native256.json": "86afe1c105ebf2b56e17369312389443ad45325023b63f4547835c6749c85c25",
+    "fold_3/global_metrics_original570x380.json": "f36933af17f78760c16dabe60bbab903f88995e3b693ee4b6e1d3f9abbccb356",
+    "fold_3/per_patient_metrics_native256.csv": "f3534d25e844fe7ba2ccdc37c27602a6c180db7d1084cc32df7ded95925d8e1d",
+    "fold_3/per_patient_metrics_original570x380.csv": "d29255ff46c92550794a6131f3eae1cd4147a193eb001560271c98d5fedee842",
+    "fold_4/FOLD_COMPLETE.json": "2835ece7214422eb0cc22f0c698b614ad3e4f77902b7ce563ad68c0b635dd9dd",
+    "fold_4/global_metrics_native256.json": "a23765a7ead6e3fb32e656e6b22e4841d4d8af246f49bbbdfe74221ecc0d32a8",
+    "fold_4/global_metrics_original570x380.json": "9e505ca7cae1323eb41475bc72bb4315c5b74dfeb5fb4f6ec70ee819a708399e",
+    "fold_4/per_patient_metrics_native256.csv": "8c468472561219a12d5354dcdc336fbd8c57b33424b1012664d348192bcd234f",
+    "fold_4/per_patient_metrics_original570x380.csv": "bf31f21c473f62b6df8950037ccf38276e25b5d14a82ae3a2d0e6dbc586f83f0",
+    "fold_5/FOLD_COMPLETE.json": "85287328de1843447f399a93261afdf125d1c579c136320cde31ae1f9c4b0a7e",
+    "fold_5/global_metrics_native256.json": "5291957c6e6c0394672cc28d3c9d1d6fad690a01805d6ed5e42c1d5b7a89ef4a",
+    "fold_5/global_metrics_original570x380.json": "eb50fea85a443d1b3a90caa12c26a35e58f742332ad1b53df40936b725291d72",
+    "fold_5/per_patient_metrics_native256.csv": "45c9924b9a94d75ac13e002cdcc288a1cd3022e27733e848ff3e03b4def3083d",
+    "fold_5/per_patient_metrics_original570x380.csv": "6c7142ae07afa3add5329e58d4c626f5f1d5ba9d1b5e5f77e3ed050fa85706d8"
+  },
+  "training_protocol_sha256": "3a37f6471518dcebbb3553da0b436ab371a5cec079053255c2df581a9ba63e31"
+}

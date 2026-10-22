@@ -1,0 +1,108 @@
+{
+  "split_name": "patient_5fold_v1",
+  "dataset_root": "E:\\Papers\\RVO_ME\\RVO-Lesion",
+  "demographics_file": "E:\\Papers\\RVO_ME\\RVO-Lesion\\Demographics of the participants.xlsx",
+  "n_patients": 130,
+  "n_images": 3012,
+  "n_outer_folds": 5,
+  "validation_patients_per_fold": 13,
+  "candidate_seeds_tested": 250,
+  "selected_random_seed": 20260823,
+  "selected_balance_score": 0.0019600510957614825,
+  "primary_labels": [
+    "IRF",
+    "SRF",
+    "ELM",
+    "EZ",
+    "HF"
+  ],
+  "stratification_features": [
+    "IRF_present",
+    "SRF_present",
+    "ELM_present",
+    "EZ_present",
+    "HF_present",
+    "IRF_high_burden",
+    "SRF_high_burden",
+    "ELM_high_burden",
+    "EZ_high_burden",
+    "HF_high_burden",
+    "female",
+    "bilateral",
+    "age_q1",
+    "age_q2",
+    "age_q3",
+    "age_q4"
+  ],
+  "burden_thresholds": {
+    "IRF": 1.0,
+    "SRF": 0.9333333333333333,
+    "ELM": 0.7391304347826086,
+    "EZ": 1.0,
+    "HF": 0.8148148148148148
+  },
+  "age_quartile_thresholds": [
+    59.25,
+    67.0,
+    73.0
+  ],
+  "fold_assignment_sha256": "7e7c2ddf51054bf998b2d750b50c74983b9bc5b751b762213bc96343ffe01346",
+  "fold_integrity": [
+    {
+      "train_patients": 91,
+      "val_patients": 13,
+      "test_patients": 26,
+      "train_eyes": 102,
+      "val_eyes": 15,
+      "test_eyes": 29,
+      "patient_leakage": 0,
+      "eye_leakage": 0,
+      "fold": 1
+    },
+    {
+      "train_patients": 91,
+      "val_patients": 13,
+      "test_patients": 26,
+      "train_eyes": 102,
+      "val_eyes": 14,
+      "test_eyes": 30,
+      "patient_leakage": 0,
+      "eye_leakage": 0,
+      "fold": 2
+    },
+    {
+      "train_patients": 90,
+      "val_patients": 14,
+      "test_patients": 26,
+      "train_eyes": 101,
+      "val_eyes": 16,
+      "test_eyes": 29,
+      "patient_leakage": 0,
+      "eye_leakage": 0,
+      "fold": 3
+    },
+    {
+      "train_patients": 89,
+      "val_patients": 15,
+      "test_patients": 26,
+      "train_eyes": 100,
+      "val_eyes": 17,
+      "test_eyes": 29,
+      "patient_leakage": 0,
+      "eye_leakage": 0,
+      "fold": 4
+    },
+    {
+      "train_patients": 89,
+      "val_patients": 15,
+      "test_patients": 26,
+      "train_eyes": 100,
+      "val_eyes": 17,
+      "test_eyes": 29,
+      "patient_leakage": 0,
+      "eye_leakage": 0,
+      "fold": 5
+    }
+  ],
+  "important_rule": "All images and eyes belonging to the same patient remain within the same role for every train/validation/test split."
+}

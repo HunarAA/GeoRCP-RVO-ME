@@ -1,0 +1,134 @@
+{
+  "ablation_plan_sha256": "e9c292325f9ad9413e11a2f805b5854e9779c733b7ed9dc221bf79575a158233",
+  "architecture": {
+    "decoder": "standard semantic ConvNeXt-style decoder",
+    "decoder_exact": [
+      "Linear 768->256 + LayerNorm + GELU",
+      "Linear 256->(64x8x8), token reassembly to stride-4 64-channel feature map",
+      "two 64-channel ConvNeXt blocks",
+      "bilinear upsample to 384x576",
+      "3x3 64->32 + GroupNorm + GELU + one 32-channel ConvNeXt block",
+      "1x1 32->5 semantic logits"
+    ],
+    "embedding_dim": 768,
+    "encoder": "MIRAGE-Base",
+    "encoder_feature": "final MIRAGE transformer block only",
+    "encoder_initialization": "official pretrained retinal OCT weights",
+    "encoder_training": "full fine-tuning",
+    "geometry_specific_heads": false,
+    "image_tokens": 216,
+    "local_detail_encoder": false,
+    "multilevel_mirage_fusion": false,
+    "task_interaction": false
+  },
+  "data": {
+    "classes": {
+      "0": "Background",
+      "1": "SRF",
+      "2": "IRF",
+      "3": "ELM",
+      "4": "EZ"
+    },
+    "image_source": "released Image_Seg/images",
+    "model_hw": [
+      384,
+      576
+    ],
+    "native_hw": [
+      380,
+      570
+    ],
+    "normalization": "official MIRAGE downstream per-image min-max [0,1]",
+    "padding_lrtb": [
+      3,
+      3,
+      2,
+      2
+    ],
+    "padding_supervised": false,
+    "padding_target_value": 255,
+    "resize": false,
+    "target_source": "released Image_Seg/masks retained by frozen scientific design for conventional semantic segmentation controls"
+  },
+  "environment": {
+    "bf16_supported": true,
+    "gpu": "NVIDIA GeForce RTX 4080",
+    "mirage_wrapper_sha256": "07fa63e2766b67dbc0c07f0d9d29db1562f707425ef2fbf90a688f62a94e6ede",
+    "python": "3.8.20 (default, Oct  3 2024, 15:19:54) [MSC v.1929 64 bit (AMD64)]",
+    "pytorch": "2.4.1+cu121",
+    "source_bundle_sha256": "04e7da4fe311b756ad375a6c241530d0572a3cf1b9c71a70af2e7e7e24524412",
+    "torch_cuda": "12.1",
+    "vram_gb": 15.99169921875
+  },
+  "global_protocol_sha256": "a9aeabf91e4eef9f82dfc1f9999301d737303f12b8713c3d9a24cf1bfd366c95",
+  "loss": {
+    "cross_entropy_weight": 1.0,
+    "dice_classes": [
+      "SRF",
+      "IRF",
+      "ELM",
+      "EZ"
+    ],
+    "foreground_dice_weight": 1.0,
+    "ignore_padding": true,
+    "name": "CrossEntropy + foreground soft multiclass Dice"
+  },
+  "mirage_wrapper_sha256": "07fa63e2766b67dbc0c07f0d9d29db1562f707425ef2fbf90a688f62a94e6ede",
+  "name": "RVO-ME MIRAGE-Base conventional semantic segmentation B2/A0 v1",
+  "preplanned_control_evidence": {
+    "A0": {
+      "configuration": "MIRAGE-Base + standard semantic decoder at 384x576",
+      "id": "A0",
+      "tests": "foundation encoder / resolution baseline"
+    },
+    "B2": {
+      "id": "B2",
+      "input": "384x576",
+      "model": "MIRAGE-Base + standard published-style ConvNeXt semantic segmentation decoder",
+      "purpose": "OCT foundation-model baseline; isolates domain pretraining + near-native resolution",
+      "status": "PENDING"
+    },
+    "ablation_plan_sha256": "e9c292325f9ad9413e11a2f805b5854e9779c733b7ed9dc221bf79575a158233",
+    "status": "PASS"
+  },
+  "preplanned_control_ids": [
+    "B2",
+    "A0"
+  ],
+  "scientific_design_master_sha256": "9f1586d102523009443e2b88dca54a9ca8fa5c983f08fdde837184d436a95801",
+  "script_revision": "STEP10_MIRAGE_SEMANTIC_B2_A0_V3_FASTIO_PATHFIX_20260829",
+  "script_sha256": "ec5abd054941a58757f3a83b30fe54655065f723be20ccb12c556cca275da11a",
+  "status": "FROZEN_BEFORE_B2_OUTER_TEST",
+  "step07_source_bundle_sha256": "04e7da4fe311b756ad375a6c241530d0572a3cf1b9c71a70af2e7e7e24524412",
+  "trackb_split_master_sha256": "7e7c2ddf51054bf998b2d750b50c74983b9bc5b751b762213bc96343ffe01346",
+  "training": {
+    "augmentation": "NONE",
+    "checkpoint_mode": "max",
+    "checkpoint_selection_metric": "validation_mean_foreground_dice_native_fov",
+    "data_pipeline_engineering": {
+      "desktop_path_binding": "Step-07 MIRAGE_WRAPPER/MIRAGE_DIR/HF_CACHE globals rebound in memory to verified D:\\RVO_ME assets; Step-07 source unchanged",
+      "non_blocking_transfer": true,
+      "num_workers": 4,
+      "persistent_workers": true,
+      "pin_memory": true,
+      "prefetch_factor": 2,
+      "scientific_effect": "NONE; engineering-only throughput optimization"
+    },
+    "decoder_lr": 0.0001,
+    "early_stopping_min_delta": 0.001,
+    "early_stopping_patience": 12,
+    "encoder_lr": 1e-05,
+    "maximum_epochs": 60,
+    "minimum_epochs_before_early_stop": 20,
+    "minimum_lr_factor": 0.01,
+    "optimizer": "AdamW",
+    "outer_test_policy": "never resolve/evaluate during training or checkpoint selection",
+    "physical_batch_size": 7,
+    "precision": "BF16",
+    "scheduler": "5-epoch linear warmup then cosine decay",
+    "seed": 20260815,
+    "validation_batch_size": 7,
+    "warmup_epochs": 5,
+    "weight_decay": 0.01
+  }
+}

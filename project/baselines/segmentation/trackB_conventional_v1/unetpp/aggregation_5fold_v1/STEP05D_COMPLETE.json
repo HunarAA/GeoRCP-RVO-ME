@@ -1,0 +1,52 @@
+{
+  "aggregate_input_sha256": "f46735d4799566c433e53849c94d9bb8d7054089add83c06886f15a705f358df",
+  "aggregation_summary_sha256": "944ee1620967920c19709c56ff172d32d756285b1ec971c4d3196fe9d5498051",
+  "bootstrap": {
+    "method": "patient_cluster_bootstrap_percentile",
+    "replicates": 10000,
+    "seed": 20260815
+  },
+  "canonical_protocol_sha256": "52ed516dcc21f1c51068c59fb662c9a0030b143e6440d6f4a0380df713c9bcaf",
+  "model": "U-Net++",
+  "n_folds": 5,
+  "n_total_images_expected": 3012,
+  "n_unique_oof_patients": 130,
+  "scales": {
+    "native256": {
+      "fold_mean_dice": 0.655339782574039,
+      "fold_mean_iou": 0.4940728476843074,
+      "fold_sd_dice": 0.02393945224799912,
+      "fold_sd_iou": 0.02825069434873901,
+      "pooled_oof_mean_dice": 0.656100289181403,
+      "pooled_oof_mean_dice_ci95": {
+        "lower": 0.6235444605654973,
+        "upper": 0.6829848423619408
+      },
+      "pooled_oof_mean_iou": 0.49331148069012054,
+      "pooled_oof_mean_iou_ci95": {
+        "lower": 0.4583728753947233,
+        "upper": 0.5258855137631998
+      }
+    },
+    "original570x380": {
+      "fold_mean_dice": 0.5773179170199753,
+      "fold_mean_iou": 0.419645783818088,
+      "fold_sd_dice": 0.026016741161405826,
+      "fold_sd_iou": 0.02946232899115401,
+      "pooled_oof_mean_dice": 0.5790345033812124,
+      "pooled_oof_mean_dice_ci95": {
+        "lower": 0.5458604090867376,
+        "upper": 0.6058184195040752
+      },
+      "pooled_oof_mean_iou": 0.41972936345656636,
+      "pooled_oof_mean_iou_ci95": {
+        "lower": 0.3848273259340745,
+        "upper": 0.4510157074399296
+      }
+    }
+  },
+  "status": "COMPLETE",
+  "step": "05D",
+  "track": "B_patient_disjoint_5fold",
+  "training_protocol_sha256": "3a37f6471518dcebbb3553da0b436ab371a5cec079053255c2df581a9ba63e31"
+}

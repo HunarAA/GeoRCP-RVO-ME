@@ -1,0 +1,6 @@
+﻿fold,patients,eyes,images,mean_age,female,male,IRF_positive_patients,IRF_positive_images,IRF_annotations,SRF_positive_patients,SRF_positive_images,SRF_annotations,ELM_positive_patients,ELM_positive_images,ELM_annotations,EZ_positive_patients,EZ_positive_images,EZ_annotations,HF_positive_patients,HF_positive_images,HF_annotations
+1,26,29,599,66.3076923076923,13,13,26,566,6874,15,246,262,20,313,429,24,554,929,26,467,1797
+2,26,30,606,67.26923076923077,11,15,25,566,7701,14,271,289,21,336,527,24,533,865,26,457,1827
+3,26,29,598,67.8076923076923,11,15,26,586,6907,15,259,269,22,334,515,25,566,968,26,453,2394
+4,26,29,631,65.8076923076923,11,15,26,612,9651,14,227,230,20,332,484,25,568,883,26,481,1542
+5,26,29,578,65.65384615384616,12,14,26,563,8405,15,212,238,20,311,431,24,512,844,26,429,1663

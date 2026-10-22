@@ -1,0 +1,50 @@
+{
+  "folds": {
+    "1": {
+      "best_checkpoint": "D:\\RVO_ME\\project\\baselines\\segmentation\\mirage_semantic_384x576_v1\\fold_1\\best_checkpoint.pt",
+      "best_epoch": 27,
+      "best_validation_mean_foreground_dice": 0.47880761950161854,
+      "completion_report": "D:\\RVO_ME\\project\\baselines\\segmentation\\mirage_semantic_384x576_v1\\fold_1\\FOLD1_TRAINING_COMPLETE.json",
+      "run_dir": "D:\\RVO_ME\\project\\baselines\\segmentation\\mirage_semantic_384x576_v1\\fold_1",
+      "status": "COMPLETE"
+    },
+    "2": {
+      "best_checkpoint": "D:\\RVO_ME\\project\\baselines\\segmentation\\mirage_semantic_384x576_v1\\fold_2\\best_checkpoint.pt",
+      "best_epoch": 23,
+      "best_validation_mean_foreground_dice": 0.5895151677259429,
+      "completion_report": "D:\\RVO_ME\\project\\baselines\\segmentation\\mirage_semantic_384x576_v1\\fold_2\\FOLD2_TRAINING_COMPLETE.json",
+      "run_dir": "D:\\RVO_ME\\project\\baselines\\segmentation\\mirage_semantic_384x576_v1\\fold_2",
+      "status": "COMPLETE"
+    },
+    "3": {
+      "best_checkpoint": "D:\\RVO_ME\\project\\baselines\\segmentation\\mirage_semantic_384x576_v1\\fold_3\\best_checkpoint.pt",
+      "best_epoch": 32,
+      "best_validation_mean_foreground_dice": 0.556643629186175,
+      "completion_report": "D:\\RVO_ME\\project\\baselines\\segmentation\\mirage_semantic_384x576_v1\\fold_3\\FOLD3_TRAINING_COMPLETE.json",
+      "run_dir": "D:\\RVO_ME\\project\\baselines\\segmentation\\mirage_semantic_384x576_v1\\fold_3",
+      "status": "COMPLETE"
+    },
+    "4": {
+      "best_checkpoint": "D:\\RVO_ME\\project\\baselines\\segmentation\\mirage_semantic_384x576_v1\\fold_4\\best_checkpoint.pt",
+      "best_epoch": 20,
+      "best_validation_mean_foreground_dice": 0.4935697496517484,
+      "completion_report": "D:\\RVO_ME\\project\\baselines\\segmentation\\mirage_semantic_384x576_v1\\fold_4\\FOLD4_TRAINING_COMPLETE.json",
+      "run_dir": "D:\\RVO_ME\\project\\baselines\\segmentation\\mirage_semantic_384x576_v1\\fold_4",
+      "status": "COMPLETE"
+    },
+    "5": {
+      "best_checkpoint": "D:\\RVO_ME\\project\\baselines\\segmentation\\mirage_semantic_384x576_v1\\fold_5\\best_checkpoint.pt",
+      "best_epoch": 14,
+      "best_validation_mean_foreground_dice": 0.5501382970240281,
+      "completion_report": "D:\\RVO_ME\\project\\baselines\\segmentation\\mirage_semantic_384x576_v1\\fold_5\\FOLD5_TRAINING_COMPLETE.json",
+      "run_dir": "D:\\RVO_ME\\project\\baselines\\segmentation\\mirage_semantic_384x576_v1\\fold_5",
+      "status": "COMPLETE"
+    }
+  },
+  "global_protocol_sha256": "a9aeabf91e4eef9f82dfc1f9999301d737303f12b8713c3d9a24cf1bfd366c95",
+  "model": "MIRAGE-Base + standard semantic ConvNeXt decoder B2/A0",
+  "outer_test_evaluated": false,
+  "outer_test_resolved": false,
+  "status": "ALL_FIVE_FOLDS_TRAINING_COMPLETE",
+  "trackb_split_master_sha256": "7e7c2ddf51054bf998b2d750b50c74983b9bc5b751b762213bc96343ffe01346"
+}
